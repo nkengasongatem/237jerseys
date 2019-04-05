@@ -1,0 +1,27 @@
+{
+  "name": "graphql-server",
+  "version": "1.0.0",
+  "description": "Node JS Express and GraphQL server side code for 273Jerseys e-commerce website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nkengasongatem/237jerseys.git"
+  },
+  "author": "nkengasong atem",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nkengasongatem/237jerseys/issues"
+  },
+  "homepage": "https://github.com/nkengasongatem/237jerseys#readme",
+  "dependencies": {
+    "cassandra-driver": "^4.0.0",
+    "express": "^4.16.4",
+    "express-graphql": "^0.7.1",
+    "graphql": "^14.2.1",
+    "lodash": "^4.17.11",
+    "nodemon": "^1.18.10"
+  }
+}

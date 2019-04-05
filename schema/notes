@@ -1,0 +1,112 @@
+
+type Product { 
+    prod_id: ID!
+    available: Float
+    description: String
+    discount: Float
+    league: String
+    picture: String
+    price: Float
+    team_country: String
+    team_crest: String
+    team_name: String
+    team_region: String
+    title: String
+}
+
+type Query {  
+   findAllProducts: [Product] 
+   findAllProductsByLeague(league: String!): [Product]
+   findAllProductsByTeam(team_name: String!): [Product]
+   findProductByPrice(price: Float!): Product
+   findProductByTitle(title: String!): Product
+   countProducts: Long
+   countAllProductsByLeague(league: String!): Long
+   countAllProductsByTeam(team_name: String!): Long
+}  
+
+type Mutation {
+   addProduct(available: Float!, description: String, discount: Float, league: String!, picture: String!, price: Float!, team_country: String, team_crest: String, team_name: String, team_region: String, title: String!): Product
+   deleteProduct(prod_id: String!) : Boolean
+   updateProduct(prod_id: String!, available: Float!, description: String, discount: Float, league: String!, picture: String!, price: Float!, team_country: String, team_crest: String, team_name: String, team_region: String, title: String!) : Product
+}
+
+schema {
+   query: Query
+   mutation: Mutation   
+}
+
+############# TEST QUERIES AND MUTATIONS ##############################
+mutation {
+  add_product(
+    available: 12,
+    description: "Best team in Cameroon founded in 1967",
+    discount: 0,
+    league: "MTN Elite One",
+    picture: null,
+    price: 5000,
+    team_country: "Cameroon",
+    team_crest: null,
+    team_name: "Coton Sport FC",
+    team_region: "North",
+    title: "Coton Sport CAF Champions League official 2018/2019 kit"
+  ){
+    title
+    price
+    team_name
+  }
+}
+
+
+{
+  products {
+    title
+    league
+  }
+}
+
+mutation {
+  update_product(
+    prod_id: "6b2ea541-5775-11e9-9226-8a542d01bfad"
+    available: 0,
+    description: "Best team in Cameroon founded in 1967",
+    discount: 0.05,
+    league: "MTN Elite Two",
+    picture: "null",
+    price: 5000.00,
+    team_country: "Cameroon",
+    team_crest: "null",
+    team_name: "Young Boys FC",
+    team_region: "North West",
+    title: "Young Boys MTN Elite Two official 2018/2019 kit"
+  ){
+    title
+    price
+    team_name
+    description
+  }
+}
+
+mutation {
+  update_product(
+    prod_id: "6b2ea541-5775-11e9-9226-8a542d01bfad"
+    available: 0,
+    description: "Best team in Cameroon founded in 1967",
+    discount: 0.05,
+    league: "MTN Elite Two",
+    picture: "null",
+    price: 3500.00,
+    team_country: "Cameroon",
+    team_crest: "null",
+    team_name: "Young Boys FC",
+    team_region: "North West",
+    title: "Young Boys MTN Elite Two official 2018/2019 kit"
+  ){
+    title
+    price
+    league
+    team_name
+    description
+  }
+}
+
